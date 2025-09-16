@@ -1,0 +1,27 @@
+package queue;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class ImplementDQ {
+    public static void main(String[] args) {
+        Deque<Integer> dq=new LinkedList<>();
+        //add- addFirst, addLast, remove/poll-removeFirst,removeLast,removeAll, peek/element-getFirst,getLast
+        dq.add(1);
+        dq.add(2);
+        dq.add(3);
+        dq.add(4);
+        dq.add(5);
+        System.out.println(dq);
+        dq.addFirst(6);
+        dq.addLast(7);
+        System.out.println(dq);
+        dq.removeFirst();
+        System.out.println(dq);
+        dq.removeLast();
+        System.out.println(dq);
+       System.out.println(dq.getFirst());
+        dq.removeLast();
+        System.out.println(dq);
+    }
+}
