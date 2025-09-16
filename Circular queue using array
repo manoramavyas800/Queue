@@ -1,0 +1,92 @@
+package queue;
+
+public class CQAImplementation {
+    public static class Cqa{
+        int f=-1;
+        int r=-1;
+        int size=0;
+        int[] arr=new int[5];
+        void add(int val) throws Exception{
+            if(size==arr.length){
+                throw new Exception("Queue is full");
+            }
+            if(size==0){
+                f=r=0;
+                arr[0]=val;
+            }else if(r<arr.length-1){
+                arr[++r]=val;
+            }else if(r==arr.length-1){
+                r=0;
+                arr[0]=val;
+            }
+            size++;
+
+        }
+        int remove(int val) throws Exception{
+            if(size==0){
+                throw new Exception("Queue is Empty !!");
+            }else{
+                int x=arr[f];
+                if(f==arr.length-1) f = 0;
+                else f++;
+                size--;
+                return x;
+            }
+
+        }
+        int peek() throws Exception{
+            if(size==0){
+                throw new Exception("Queue is Empty !!");
+            }else
+                return arr[f];
+        }
+        boolean isEmpty() {
+            if(size==0){
+                return true;
+            }else{
+                return false;
+
+            }
+        }
+        void display() throws Exception{
+            if(size==0){
+                throw new Exception("Queue is Empty !!");
+            }else if(f<=r){
+                for(int i=f;i<=r;i++){
+                    System.out.print(arr[i]+" ");
+                }
+            }else{
+                for(int i=f;i<arr.length;i++){
+                    System.out.print(arr[i]+" ");
+                }
+                for(int i=0; i<=r;i++){
+                    System.out.print(arr[i]+" ");
+                }
+            }
+            System.out.println();
+        }
+
+    }
+    public static void main(String[] args) throws Exception {
+        Cqa q=new Cqa();
+        System.out.println(q.isEmpty());
+        q.add(1);
+        q.add(2);
+        System.out.println(q.isEmpty());
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        System.out.println(q.peek());
+        q.display();
+       q.remove(1);
+        q.display();
+        q.remove(2);
+        q.display();
+        q.add(4);
+        q.display();
+        System.out.println(q.peek());
+        System.out.println(q.size);
+
+
+    }
+}
