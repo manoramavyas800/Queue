@@ -1,0 +1,87 @@
+package queue;
+
+public class LLcq {
+    public  static class  Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+        static class LLCQueue {
+            Node head = null;
+            Node tail = null;
+            int size = 0;
+
+            void add(int val)  {
+                Node temp = new Node(val);
+                if (size == 0) {
+                    tail=head=temp;
+                    tail.next = temp;
+                } else {
+                    tail.next = temp;
+                    tail = temp;
+                    tail.next = head;
+                }
+                size++;
+            }
+            int remove()  {
+                if (size == 0) {
+                    System.out.println("Queue is empty");
+                    return -1;
+                }else {
+                    int x = head.data;
+                    if(size==1){
+                        head=tail=null;
+                    }else {
+                        head = head.next;
+                        tail.next = head;
+                    }
+                    size--;
+                    return x;
+                }
+
+            }
+            int peek()  {
+                if (size == 0) {
+                    System.out.println("Queue is empty");
+                    return -1;
+                }else{
+                    return head.data;
+                }
+            }
+
+            void display() {
+                if (size == 0) {
+                    System.out.println("Queue is empty");
+                    return;
+                }
+                Node temp = head;
+                do {
+                    System.out.print(temp.data + " ");
+                    temp = temp.next;
+                } while (temp != head);
+                System.out.println();
+            }
+        }
+
+    public static void main(String[] args)  {
+            LLCQueue queue = new LLCQueue();
+            queue.add(2);
+            queue.add(3);
+            queue.add(4);
+            queue.add(5);
+            queue.display();
+            queue.add(6);
+            queue.display();
+            queue.remove();
+            queue.display();
+            queue.remove();
+            queue.display();
+            System.out.println(queue.peek());
+    }
+
+    }
+
+}
