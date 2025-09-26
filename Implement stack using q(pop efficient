@@ -1,0 +1,52 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ImpStackUsingQ {
+    int size=0;
+    Queue<Integer> q = new LinkedList<>();
+    void push(int x){
+        if(q.isEmpty())q.add(x);
+        else q.add(x);
+        for(int i=1;i<q.size();i++) {
+            q.add(q.poll());
+            size++;
+        }
+
+    }
+    int pop(){
+
+        return q.poll();//pop efficient
+    }
+    int peek(){
+
+        return q.peek();
+    }
+    boolean isEmpty(){
+        return q.isEmpty();
+    }
+    int size(){
+        return size;
+    }
+    public static void main(String[] args) {
+        ImpStackUsingQ impStack = new ImpStackUsingQ();
+        System.out.println(impStack.isEmpty());
+        impStack.push(1);
+        impStack.push(2);
+        impStack.push(3);
+        impStack.push(4);
+        impStack.push(5);
+        impStack.push(6);
+        impStack.push(7);
+        impStack.push(8);
+        int res = impStack.pop();
+        System.out.println(res);
+        int res2 = impStack.pop();
+        System.out.println(res2);
+        System.out.println(impStack.isEmpty());
+        System.out.println(impStack.size());
+        System.out.println(impStack.peek());
+    }
+
+}
