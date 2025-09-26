@@ -1,0 +1,65 @@
+package queue;
+
+import java.util.Stack;
+
+public class ImpQusingStack {
+    int size;
+    Stack<Integer> st = new Stack<>();
+    Stack<Integer> helper = new Stack<>();
+    void add(int x){
+        st.add(x);
+        size++;
+    }
+    int pop(){
+       while(st.size()>1){
+           helper.push(st.pop());
+       }
+       int x=st.pop();
+       size--;
+       while(!helper.isEmpty()){
+           st.push(helper.pop());
+
+        }
+        return x;
+    }
+    int peek(){
+        while(st.size()>1){
+            helper.push(st.pop());
+        }
+        int x=st.peek();
+        while(!helper.isEmpty()){
+            st.push(helper.pop());
+
+        }
+        return x;
+    }
+    boolean isEmpty(){
+        if(size==0) return true;
+        return false;
+    }
+    int size(){
+        return size;
+    }
+    public static void main(String[] args) {
+        ImpQusingStack q = new ImpQusingStack();
+        System.out.println(q.isEmpty());
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        q.add(6);
+        q.add(7);
+        q.add(8);
+        System.out.println(q.size());
+        int y=q.pop();
+        System.out.println(y);
+        int x=q.peek();
+        int z=q.pop();
+        System.out.println(z);
+        System.out.println(x);
+        System.out.println(q.isEmpty());
+        System.out.println(q.size());
+
+    }
+}
